@@ -15,11 +15,11 @@
             <div class="primary">
 				<table>
 					<tr id="1st-1">	
-                		<td><img src="image\\1.png" title="金" ondblclick="move_element(1)"></td>
-                		<td><img src="image\\2.png" title="木" ondblclick="move_element(2)"></td>
-                		<td><img src="image\\3.png" title="水" ondblclick="move_element(3)"></td>
-						<td><img src="image\\4.png" title="火" ondblclick="move_element(4)"></td>
-						<td><img src="image\\5.png" title="土" ondblclick="move_element(5)"></td>
+                		<td><img src="image\\1.png" title="金" onclick="move_element(1)"></td>
+                		<td><img src="image\\2.png" title="木" onclick="move_element(2)"></td>
+                		<td><img src="image\\3.png" title="水" onclick="move_element(3)"></td>
+						<td><img src="image\\4.png" title="火" onclick="move_element(4)"></td>
+						<td><img src="image\\5.png" title="土" onclick="move_element(5)"></td>
 					</tr>
 					<tr id="1st-2">
 						<td id="1">0</td>
@@ -194,7 +194,7 @@
 		var newEl = document.createElement('td');
 		var newEl2 = document.createElement('img');
 		newEl2.setAttribute('src', 'image\\'+index.toString()+'.png');
-		newEl2.setAttribute('ondblclick', 'move_element('+index+')')
+		newEl2.setAttribute('onclick', 'move_element('+index+')')
 		newEl.appendChild(newEl2);		
 		position.appendChild(newEl);
 				
@@ -214,7 +214,7 @@
 			var newEl2 = document.createElement('img');
 			newEl2.setAttribute('src', 'image\\'+index.toString()+'.png');
 			newEl2.setAttribute('id', index.toString()+'_down');
-			newEl2.setAttribute('ondblclick','move_back_element('+index+')')
+			newEl2.setAttribute('onclick','move_back_element('+index+')')
 			newEl.appendChild(newEl2);
 			var position = document.getElementById("get_element");
 			position.appendChild(newEl);
