@@ -335,9 +335,9 @@
 			money -= 2*price[index]*quantity;
 			El.textContent = money;
 			if (document.getElementById(index)){
-				mission_complete(index,quantity)
+				mission_complete(index,parseInt(quantity))
 			}else{
-				get_new_element(index,quantity)
+				get_new_element(index,parseInt(quantity))
 			}
 		}else{
 			alert("你沒有那麼多錢")
@@ -350,7 +350,7 @@
 	function sold(){
 		var Q_element = document.getElementById('Q');
 		var Q = Q_element.value;
-		for (index=1;index<6;index++){
+		for (index=1;index<84;index++){
 			if (document.getElementById(index.toString()+"_down")){
 				var El = document.getElementById('money');
 				var money = parseInt(El.textContent);
