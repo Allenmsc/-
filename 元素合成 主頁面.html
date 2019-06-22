@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+    
+<html>
+    <head>
+        <title>元素合成</title>
+    </head>
+    
+    <body background="wallpaper2.png">
+        <h1 style = "text-align:center">主頁面</h1>
+		<div style="text-align:right" id="pre">Total money:<div style="text-align: right" id="money">0</div></div>
+		<br>
+		
+        <fieldset>
+			<legend><b>初階</b></legend>
+            <div class="primary">
+				<table>
+					<tr id="1st-1">	
+                		<td><img src="image\\1.png" title="金" onclick="move_element(1)"></td>
+                		<td><img src="image\\2.png" title="木" onclick="move_element(2)"></td>
+                		<td><img src="image\\3.png" title="水" onclick="move_element(3)"></td>
+						<td><img src="image\\4.png" title="火" onclick="move_element(4)"></td>
+						<td><img src="image\\5.png" title="土" onclick="move_element(5)"></td>
+					</tr>
+					<tr id="1st-2">
+						<td id="1">0</td>
+						<td id="2">0</td>
+						<td id="3">0</td>
+						<td id="4">0</td>
+						<td id="5">0</td>
+					</tr>
+				</table>
+            </div>       
+        </fieldset>
+        
+        
+              
+        <fieldset>
+            <div class="secondary">
+				<legend><b>次階</b></legend>
+					<table>
+						<tr id="2nd-1">
+						</tr>
+						<tr id="2nd-2">
+						</tr>								
+					</table>                       
+            </div>
+        </fieldset>
+        
+        
+        
+        
+        <fieldset>
+            <div class="third">
+				<legend><b>進階</b></legend>
+					<table>
+						<tr id="3rd-1">
+						</tr>
+						<tr id="3rd-2">
+						</tr>								
+					</table>                                           
+            </div>
+        </fieldset>
+        
+        
+        
+        <fieldset>
+            <div class="fourth">
+				<legend><b>高階</b></legend>
+ 					<table>
+						<tr id="4th-1">
+						</tr>
+						<tr id="4th-2">
+						</tr>								
+					</table>                           
+            </div>       
+        </fieldset>
+        
+        
+        
+        
+        
+        <fieldset>
+            <div class="special">
+				<legend><b>特殊材料</b></legend>
+					<table>
+						<tr id="5th-1">
+						</tr>
+						<tr id="5th-2">
+						</tr>								
+					</table>                                     
+            </div>
+        </fieldset>
+		
+		
+		<fieldset>
+            <div class="last">
+				<legend><b>最終道具</b></legend>
+					<table>
+						<tr id="6th-1">
+						</tr>
+						<tr id="6th-2">
+						</tr>								
+					</table>                                     
+            </div>
+        </fieldset>
+		
+		
+		
+		<input type="text" id="get" size="10">
+		<button onclick="input_coding()">輸入優待碼</button>
+		<br/>
+        
+        
+    <button onclick="mission_complete(1);mission_complete(2);this.disabled=true"> mission1 </button>
+		<button onclick="mission_complete(1);mission_complete(3);this.disabled=true"> mission2 </button>
+		<button onclick="mission_complete(1);mission_complete(4);this.disabled=true"> mission3 </button>
+		<button onclick="mission_complete(1);mission_complete(5);this.disabled=true"> mission4 </button>
+		<button onclick="mission_complete(2);mission_complete(3);this.disabled=true"> mission5 </button>
+		<button onclick="mission_complete(2);mission_complete(4);this.disabled=true"> mission6 </button>
+		<button onclick="mission_complete(2);mission_complete(5);this.disabled=true"> mission7 </button>
+		<button onclick="mission_complete(3);mission_complete(4);this.disabled=true"> mission8 </button>
+		<button onclick="mission_complete(3);mission_complete(5);this.disabled=true"> mission9 </button>
+		<button onclick="mission_complete(4);mission_complete(5);this.disabled=true"> mission10 </button>
+		
+		
+		<fieldset>
+			<div id = "get_element"> 
+			</div>
+			<br/>
+			*
+			<input type="text" name="Q" id = "Q" size="1">
+			<button type="submit" onclick="synthesis()"> 合成 </button>
+			<button type="submit" onclick="sold()">賣出元素</button>
+		</fieldset>
+		
+		<fieldset>
+			<legend><b>購買元素</b></legend>
+			<table>
+				<tr>
+					<td>元素代碼</td>
+					<td></td>
+					<td>數　量</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="text" id="E" size="1"></td>
+					<td>*</td>
+					<td><input type="text" id="q" size="1"></td>
+					<td><button type="submit" onclick="buy_element()">購買</button></td>
+			  </tr>	 
+			
+			</table>
+		</fieldset>
+    </body>
+</html>
+
+
+
+<script type="text/javascript">
+    var quantity = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+	var price = [0,10,10,10,10,10,30,30,30,30,30,30,30,30,30,30,40,40,40,40,40,40,40,40,50,50,50,50,60,130,100,130,100,100,110,130,120,100,100,120,120,110,110,130,110,260,370,330,300,300,290,260,240,320,250,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000]
+	var count = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+	
+	<!--在元素欄位增加元素的數量-->
+	function mission_complete(index, get=10){
+		quantity[index] += get;
+		var hello = index;
+        var el1 = document.getElementById(hello);
+		el1.textContent = quantity[index];
+            };
+	
+	<!--讓原本沒有的元素放到欄位裡面-->
+	function get_new_element(index, number){
+		if (index>5 && index<29){
+			var position = document.getElementById("2nd-1");
+			var num_position = document.getElementById("2nd-2");
+		}else if(index>28 && index<45){
+			var position = document.getElementById("3rd-1");
+			var num_position = document.getElementById("3rd-2");
+		}else if(index>44 && index<55){
+			var position = document.getElementById("4th-1");
+			var num_position = document.getElementById("4th-2");
+		}else if(index>54 && index<71){
+			var position = document.getElementById("5th-1");
+			var num_position = document.getElementById("5th-2");
+		}else if(index>70 && index<87){
+			var position = document.getElementById("6th-1");
+			var num_position = document.getElementById("6th-2");
+		}else{
+			var position = document.getElementById("1st-1");
+			var num_position = document.getElementById("1st-2");
+		}
+		
+		var newEl = document.createElement('td');
+		var newEl2 = document.createElement('img');
+		newEl2.setAttribute('src', 'image\\'+index.toString()+'.png');
+		newEl2.setAttribute('onclick', 'move_element('+index+')')
+		newEl.appendChild(newEl2);		
+		position.appendChild(newEl);
+				
+		var El = document.createElement('td');
+		El.setAttribute('id',index.toString());
+		var text = document.createTextNode(number);
+		El.appendChild(text);
+		num_position.appendChild(El);
+		quantity[index] = number;
+	}
+	get_new_element(42,10)
+	
+	<!--把元素移到下面-->
+	function move_element(index){
+		if (quantity[index]>0){
+			if (document.getElementById(index.toString()+'_down')){
+				alert('你已經把這個元素移下去了');
+			}else{
+				var newEl = document.createElement('p');
+				var newEl2 = document.createElement('img');
+				newEl2.setAttribute('src', 'image\\'+index.toString()+'.png');
+				newEl2.setAttribute('id', index.toString()+'_down');
+				newEl2.setAttribute('onclick','move_back_element('+index+')')
+				newEl.appendChild(newEl2);
+				var position = document.getElementById("get_element");
+				position.appendChild(newEl);
+				mission_complete(index, -1);
+				}
+			}
+	}	
+	
+	
+	function move_back_element(index){	
+		var El = document.getElementById(index.toString()+'_down')
+		mission_complete(index,1);
+		El.parentNode.parentNode.removeChild(El.parentNode);				
+	}	
+	
+	function remove_element(){
+		var El = document.getElementById("get_element");
+		times = El.childNodes.length;
+		for(i=0; i<times; i++){
+			El.removeChild(El.childNodes[0]);
+		}
+	}
+	
+	function input_coding(){
+		var input = document.getElementById('get');
+		if (input.value == 'doe2k'){
+			if (count[0]>0){
+				mission_complete(1);mission_complete(2);
+				count[0] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}		
+		}else if(input.value == '3kd03'){
+			if (count[1]>0){
+				mission_complete(1);mission_complete(3);
+				count[1] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'doi32'){
+			if (count[2]>0){
+				mission_complete(1);mission_complete(4);
+				count[2] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == '0ekv9'){
+			if (count[3]>0){
+				mission_complete(1);mission_complete(5);
+				count[3] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'bnjei'){
+			if (count[4]>0){
+				mission_complete(2);mission_complete(3);
+				count[4] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == '53cje'){
+			if (count[5]>0){
+				mission_complete(2);mission_complete(4);
+				count[5] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == '21873'){
+			if (count[6]>0){
+				mission_complete(2);mission_complete(5);
+				count[6] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'soi4c'){
+			if (count[7]>0){
+				mission_complete(3);mission_complete(4);
+				count[7] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == '0dlx6'){
+			if (count[8]>0){
+				mission_complete(3);mission_complete(5);
+				count[8] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'icuw6'){
+			if (count[9]>0){
+				mission_complete(4);mission_complete(5);
+				count[9] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'humed23rd'){
+			if (count[10]>0){
+				mission_complete(1,5);mission_complete(2,5);mission_complete(3,5);mission_complete(4,5);mission_complete(5,5);
+				count[10] -= 1;
+				alert('唉呦不錯喔')
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == '3id9e'){
+			if (count[11]>0){
+				get_new_element(55,1)
+				count[11] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'pc9el'){
+			if (count[12]>0){
+				get_new_element(56,1)
+				count[12] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == '95vdk'){
+			if (count[13]>0){
+				get_new_element(57,1)
+				count[13] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 's0cj8'){
+			if (count[14]>0){
+				get_new_element(58,1)
+				count[14] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'f5dcj'){
+			if (count[15]>0){
+				get_new_element(59,1)
+				count[15] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'cj9v7'){
+			if (count[16]>0){
+				get_new_element(60,1)
+				count[16] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 's92jd'){
+			if (count[17]>0){
+				get_new_element(61,1)
+				count[17] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'd29vj'){
+			if (count[18]>0){
+				get_new_element(62,1)
+				count[18] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'zsdin'){
+			if (count[19]>0){
+				get_new_element(63,1)
+				count[19] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'voanx'){
+			if (count[20]>0){
+				get_new_element(64,1)
+				count[20] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'voiij'){
+			if (count[21]>0){
+				get_new_element(65,1)
+				count[21] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == '2kv93'){
+			if (count[22]>0){
+				get_new_element(66,1)
+				count[22] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'f5cve'){
+			if (count[23]>0){
+				get_new_element(67,1)
+				count[23] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'xveo3'){
+			if (count[24]>0){
+				get_new_element(68,1)
+				count[24] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'ap92h'){
+			if (count[25]>0){
+				get_new_element(69,1)
+				count[25] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 've29j'){
+			if (count[26]>0){
+				get_new_element(70,1)
+				count[26] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else{
+			alert('此序號不存在')
+		}
+		
+		
+		input.value ="";
+	}
+	
+	function buy_element(){
+		var e = document.getElementById('E');
+		var index = e.value;
+		var q = document.getElementById('q');
+		var quantity = q.value;
+		var El = document.getElementById('money');
+		var money = parseInt(El.textContent);
+		if (index > 54 ||  index<1){
+			alert("這個元素是不能合成的喔")
+		}else{
+			if (money >= 2*price[index]*quantity){
+				money -= 2*price[index]*quantity;
+				El.textContent = money;
+				if (document.getElementById(index)){
+					mission_complete(index,parseInt(quantity))
+				}else{
+					get_new_element(index,parseInt(quantity))
+				}
+			}else{
+				alert("你沒有那麼多錢")
+			}			
+		}
+		e.value = "";
+		q.value = "";
+	}
+	
+	function sold(){
+		var Q_element = document.getElementById('Q');
+		var Q = Q_element.value;
+		for (index=1;index<87;index++){
+			if (document.getElementById(index.toString()+"_down")){
+				var El = document.getElementById('money');
+				var money = parseInt(El.textContent);
+				money+=price[index];
+			
+			
+			
+				if(quantity[index] >= (Q-1)){
+					for (i=1; i<Q; i++){				
+						mission_complete(index,-1);
+						money+=price[index]
+					}
+				}else{
+					alert("你沒有那麼多元素好ㄇ，鼻要貪心")
+				}
+				El.textContent = money;
+			}
+		}
+		remove_element();
+		Q_element.value = "";
+	}
+			
+	function two_element_verify(a,b){
+		if (document.getElementById(a.toString()+"_down") && document.getElementById(b.toString()+"_down") && document.getElementById("get_element").childElementCount ==2){
+			return(true);
+		}else{
+			return(false);
+		}		
+	}
+	
+	function two_element_synthesis(a, b, final){
+		var Q_element = document.getElementById('Q');
+		var Q = Q_element.value;
+			if (document.getElementById(final.toString())){
+				mission_complete(final,1);
+				remove_element();
+				Q_element.value="";
+			}else{
+				get_new_element(final,1);
+				remove_element();
+				Q_element.value="";
+			}
+			
+			if(quantity[a] >= (Q-1) && quantity[b]>= (Q-1)){
+				for (i=1; i<Q; i++){				
+					mission_complete(a,-1);
+					mission_complete(b,-1);
+					mission_complete(final,1);
+				}
+			}else{
+				alert("你沒有那麼多元素好ㄇ，鼻要貪心")
+			}
+		}
+		
+	function three_element_verify(a,b,c){
+		if (document.getElementById(a.toString()+"_down") && document.getElementById(b.toString()+"_down") && document.getElementById(c.toString()+"_down") && document.getElementById("get_element").childElementCount ==3){
+			return(true);
+		}else{
+			return(false);
+		}		
+	}
+	
+	function three_element_synthesis(a, b, c, final){
+		var Q_element = document.getElementById('Q');
+		var Q = Q_element.value;
+			if (document.getElementById(final.toString())){
+				mission_complete(final,1);
+				remove_element();
+				Q_element.value="";
+			}else{
+				get_new_element(final,1);
+				remove_element();
+				Q_element.value="";
+			}
+			
+			if(quantity[a] >= (Q-1) && quantity[b]>= (Q-1)&& quantity[c]>= (Q-1)){
+				for (i=1; i<Q; i++){				
+					mission_complete(a,-1);
+					mission_complete(b,-1);
+					mission_complete(c,-1);
+					mission_complete(final,1);
+				}
+			}else{
+				alert("你沒有那麼多元素好ㄇ，鼻要貪心")
+			}
+		}
+	
+	function four_element_verify(a,b,c,d){
+		if (document.getElementById(a.toString()+"_down") && document.getElementById(b.toString()+"_down") && document.getElementById(c.toString()+"_down") && document.getElementById(d.toString()+"_down") && document.getElementById("get_element").childElementCount ==4){
+			return(true);
+		}else{
+			return(false);
+		}		
+	}
+	
+	function four_element_synthesis(a, b, c, d, final){
+		var Q_element = document.getElementById('Q');
+		var Q = Q_element.value;
+			if (document.getElementById(final.toString())){
+				mission_complete(final,1);
+				remove_element();
+				Q_element.value="";
+			}else{
+				get_new_element(final,1);
+				remove_element();
+				Q_element.value="";
+			}
+			
+			if(quantity[a] >= (Q-1) && quantity[b]>= (Q-1)&& quantity[c]>= (Q-1)&& quantity[d]>= (Q-1)){
+				for (i=1; i<Q; i++){				
+					mission_complete(a,-1);
+					mission_complete(b,-1);
+					mission_complete(c,-1);
+					mission_complete(d,-1);
+					mission_complete(final,1);
+				}
+			}else{
+				alert("你沒有那麼多元素好ㄇ，鼻要貪心")
+			}
+		}
+	function five_element_verify(a,b,c,d,e){
+		if (document.getElementById(a.toString()+"_down") && document.getElementById(b.toString()+"_down") && document.getElementById(c.toString()+"_down") && document.getElementById(d.toString()+"_down") && document.getElementById(e.toString()+"_down")&& document.getElementById("get_element").childElementCount ==5){
+			return(true);
+		}else{
+			return(false);
+		}		
+	}
+	
+	function five_element_synthesis(a, b, c, d, e, final){
+		var Q_element = document.getElementById('Q');
+		var Q = Q_element.value;
+			if (document.getElementById(final.toString())){
+				mission_complete(final,1);
+				remove_element();
+				Q_element.value="";
+			}else{
+				get_new_element(final,1);
+				remove_element();
+				Q_element.value="";
+			}
+			
+			if(quantity[a] >= (Q-1) && quantity[b]>= (Q-1)&& quantity[c]>= (Q-1)&& quantity[d]>= (Q-1)&& quantity[e]>= (Q-1)){
+				for (i=1; i<Q; i++){				
+					mission_complete(a,-1);
+					mission_complete(b,-1);
+					mission_complete(c,-1);
+					mission_complete(d,-1);
+					mission_complete(e,-1);
+					mission_complete(final,1);
+				}
+			}else{
+				alert("你沒有那麼多元素好ㄇ，鼻要貪心")
+			}
+		}
+	
+	
+	function synthesis(){
+		if (two_element_verify(1,2)){
+			two_element_synthesis(1,2,6);
+		}else if(two_element_verify(1,3)){
+			two_element_synthesis(1,3,7);			
+		}else if(two_element_verify(1,4)){
+			two_element_synthesis(1,4,8);			
+		}else if(two_element_verify(1,5)){
+			two_element_synthesis(1,5,9);			
+		}else if(two_element_verify(2,3)){
+			two_element_synthesis(2,3,10);			
+		}else if(two_element_verify(2,4)){
+			two_element_synthesis(2,4,11);			
+		}else if(two_element_verify(2,5)){
+			two_element_synthesis(2,5,12);			
+		}else if(two_element_verify(3,4)){
+			two_element_synthesis(3,4,13);			
+		}else if(two_element_verify(3,5)){
+			two_element_synthesis(3,5,14);			
+		}else if(two_element_verify(4,5)){
+			two_element_synthesis(4,5,15);			
+		}else if(three_element_verify(1,2,4)){
+			three_element_synthesis(1,2,4,16);			
+		}else if(three_element_verify(1,2,5)){
+			three_element_synthesis(1,2,5,17);			
+		}else if(three_element_verify(1,3,4)){
+			three_element_synthesis(1,3,4,18);			
+		}else if(three_element_verify(1,3,5)){
+			three_element_synthesis(1,3,4,19);			
+		}else if(three_element_verify(2,3,4)){
+			three_element_synthesis(2,3,4,20);			
+		}else if(three_element_verify(2,3,5)){
+			three_element_synthesis(2,3,5,21);			
+		}else if(three_element_verify(2,4,5)){
+			three_element_synthesis(2,4,5,22);			
+		}else if(three_element_verify(3,4,5)){
+			three_element_synthesis(3,4,5,23);			
+		}else if(four_element_verify(1,2,3,4)){
+			four_element_synthesis(1,2,3,4,24);			
+		}else if(four_element_verify(1,2,4,5)){
+			four_element_synthesis(1,2,4,5,25);			
+		}else if(four_element_verify(1,3,4,5)){
+			four_element_synthesis(1,3,4,5,26);			
+		}else if(four_element_verify(2,3,4,5)){
+			four_element_synthesis(2,3,4,5,27);			
+		}else if(five_element_verify(1,2,3,4,5)){
+			five_element_synthesis(1,2,3,4,5,28)
+		}else if(two_element_verify(27,28)){
+			two_element_synthesis(27,28,29);			
+		}else if(two_element_verify(27,6)){
+			two_element_synthesis(27,6,30);			
+		}else if(three_element_verify(18,21,14)){
+			three_element_synthesis(18,21,14,31);			
+		}else if(three_element_verify(20,4,11)){
+			three_element_synthesis(20,4,11,32);			
+		}else if(four_element_verify(9,4,8,5)){
+			four_element_synthesis(9,4,8,5,33);			
+		}else if(three_element_verify(2,17,16)){
+			three_element_synthesis(2,17,16,34);			
+		}else if(three_element_verify(15,18,20)){
+			three_element_synthesis(15,18,20,35);			
+		}else if(three_element_verify(18,13,10)){
+			three_element_synthesis(18,13,10,36);			
+		}else if(two_element_verify(27,14)){
+			two_element_synthesis(27,14,37);			
+		}else if(two_element_verify(21,18)){
+			two_element_synthesis(21,18,38);			
+		}else if(two_element_verify(28,18)){
+			two_element_synthesis(28,18,39);			
+		}else if(three_element_verify(12,14,18)){
+			three_element_synthesis(12,14,18,40);			
+		}else if(two_element_verify(11,28)){
+			two_element_synthesis(11,28,41);			
+		}else if(two_element_verify(15,9)){
+			two_element_synthesis(15,9,42);			
+		}else if(three_element_verify(26,24,4)){
+			three_element_synthesis(26,24,4,43);			
+		}else if(three_element_verify(7,11,8)){
+			three_element_synthesis(7,11,8,44);			
+		}else if(two_element_verify(29,30)){
+			two_element_synthesis(29,30,45);			
+		}else if(three_element_verify(31,33,41)){
+			three_element_synthesis(31,33,41,46);			
+		}else if(three_element_verify(27,29,40)){
+			three_element_synthesis(27,29,40,47);			
+		}else if(four_element_verify(28,4,30,32)){
+			four_element_synthesis(28,4,30,32,48);			
+		}else if(three_element_verify(31,4,35)){
+			three_element_synthesis(31,4,35,49);			
+		}else if(three_element_verify(40,4,29)){
+			three_element_synthesis(40,4,29,50);			
+		}else if(two_element_verify(37,35)){
+			two_element_synthesis(37,35,51);			
+		}else if(two_element_verify(41,33)){
+			two_element_synthesis(41,33,52);			
+		}else if(three_element_verify(27,41,29)){
+			three_element_synthesis(27,41,29,53);			
+		}else if(three_element_verify(3,42,32)){
+			three_element_synthesis(3,42,32,54);			
+		}else if(four_element_verify(55,45,33,39)){
+			four_element_synthesis(55,45,33,39,71);			
+		}else if(four_element_verify(56,48,24,32)){
+			four_element_synthesis(56,48,24,32,72);			
+		}else if(four_element_verify(57,47,31,14)){
+			four_element_synthesis(57,47,31,14,73);			
+		}else if(four_element_verify(58,49,6,39)){
+			four_element_synthesis(58,49,6,39,74);			
+		}else if(three_element_verify(59,6,32)){
+			three_element_synthesis(59,6,32,75);			
+		}else if(four_element_verify(60,45,23,34)){
+			four_element_synthesis(60,45,23,34,76);			
+		}else if(five_element_verify(61,50,3,34,27)){
+			five_element_synthesis(61,50,3,34,27,77)
+		}else if(four_element_verify(62,51,30,25)){
+			four_element_synthesis(62,51,30,25,78);			
+		}else if(four_element_verify(63,54,39,32)){
+			four_element_synthesis(63,54,39,32,79);			
+		}else if(four_element_verify(64,45,30,44)){
+			four_element_synthesis(64,45,30,44,80);			
+		}else if(three_element_verify(65,53,38)){
+			three_element_synthesis(65,53,38,81);			
+		}else if(four_element_verify(66,50,29,28)){
+			four_element_synthesis(66,50,29,28,82);			
+		}else if(three_element_verify(67,46,34)){
+			three_element_synthesis(67,46,34,83);			
+		}else if(four_element_verify(68,52,33,43)){
+			four_element_synthesis(68,52,33,43,84);			
+		}else if(four_element_verify(69,52,32,30)){
+			four_element_synthesis(69,52,32,30,85);			
+		}else if(three_element_verify(70,44,48)){
+			three_element_synthesis(70,44,48,86);			
+		}
+		
+		else{
+			var Q_element = document.getElementById('Q');
+			var Q = Q_element.value;
+			if (document.getElementById("trash")){
+				mission_complete('trash',1);
+				alert("You got trash");
+				remove_element();
+				Q_element.value="";
+			}else{
+				get_new_element('trash',1);
+				alert("You got trash");
+				remove_element();
+				Q_element.value="";
+			}
+		}
+		
+	}
+</script>
+
+
+
+<style>
+body{
+	font-family:'微軟正黑體';
+	}
+	
+img{
+    height: 50px;
+    width: 40px;
+    float: left;
+    margin: 5px;
+    }
+
+	
+td{
+	text-align: center;
+	}
+	
+#money, #pre{
+		display: inline-block;
+		float: right;
+	}
+	
+</style>
