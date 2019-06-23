@@ -108,20 +108,7 @@
 		
 		<input type="text" id="get" size="10">
 		<button onclick="input_coding()">輸入優待碼</button>
-		<br/>
-        
-        
-    <button onclick="mission_complete(1);mission_complete(2);this.disabled=true"> mission1 </button>
-		<button onclick="mission_complete(1);mission_complete(3);this.disabled=true"> mission2 </button>
-		<button onclick="mission_complete(1);mission_complete(4);this.disabled=true"> mission3 </button>
-		<button onclick="mission_complete(1);mission_complete(5);this.disabled=true"> mission4 </button>
-		<button onclick="mission_complete(2);mission_complete(3);this.disabled=true"> mission5 </button>
-		<button onclick="mission_complete(2);mission_complete(4);this.disabled=true"> mission6 </button>
-		<button onclick="mission_complete(2);mission_complete(5);this.disabled=true"> mission7 </button>
-		<button onclick="mission_complete(3);mission_complete(4);this.disabled=true"> mission8 </button>
-		<button onclick="mission_complete(3);mission_complete(5);this.disabled=true"> mission9 </button>
-		<button onclick="mission_complete(4);mission_complete(5);this.disabled=true"> mission10 </button>
-		
+		<br/>	
 		
 		<fieldset>
 			<div id = "get_element"> 
@@ -474,6 +461,16 @@
 				money += 1500;
 				El.textContent = money;
 				count[31] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'd0vu3'){
+			if (count[32]>0){
+				var El = document.getElementById('money');
+				var money = parseInt(El.textContent);
+				money += 1000;
+				El.textContent = money;
+				count[32] -= 1;
 			}else{
 				alert('你已經用過這個序號了喔')
 			}
