@@ -159,7 +159,7 @@
 <script type="text/javascript">
     var quantity = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 	var price = [0,10,10,10,10,10,30,30,30,30,30,30,30,30,30,30,40,40,40,40,40,40,40,40,50,50,50,50,60,130,100,130,100,100,110,130,120,100,100,120,120,110,110,130,110,260,370,330,300,300,290,260,240,320,250,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000]
-	var count = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+	var count = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 	
 	<!--在元素欄位增加元素的數量-->
 	function mission_complete(index, get=10){
@@ -314,7 +314,7 @@
 			}
 		}else if(input.value == 'humed23rd'){
 			if (count[10]>0){
-				mission_complete(1,5);mission_complete(2,5);mission_complete(3,5);mission_complete(4,5);mission_complete(5,5);
+				mission_complete(1,23);mission_complete(2,23);mission_complete(3,23);mission_complete(4,23);mission_complete(5,23);
 				count[10] -= 1;
 				alert('唉呦不錯喔')
 			}else{
@@ -432,11 +432,54 @@
 			}else{
 				alert('你已經用過這個序號了喔')
 			}
+		}else if(input.value == 'nohumed24'){
+			if (count[27]>0){
+				mission_complete(1,20);mission_complete(2,20);mission_complete(3,20);mission_complete(4,20);mission_complete(5,20);
+				alert('bingo');
+				count[27] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 's9enb3'){
+			if (count[28]>0){					
+				mission_complete(1,20);mission_complete(2,20);mission_complete(3,20);mission_complete(4,20);mission_complete(5,20);
+				count[28] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'cid83'){
+			if (count[29]>0){
+				var El = document.getElementById('money');
+				var money = parseInt(El.textContent);
+				money += 500;
+				El.textContent = money;
+				count[29] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == '9dkc8'){
+			if (count[30]>0){
+				var El = document.getElementById('money');
+				var money = parseInt(El.textContent);
+				money += 1000;
+				El.textContent = money;
+				count[30] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
+		}else if(input.value == 'd9cj3'){
+			if (count[31]>0){
+				var El = document.getElementById('money');
+				var money = parseInt(El.textContent);
+				money += 1500;
+				El.textContent = money;
+				count[31] -= 1;
+			}else{
+				alert('你已經用過這個序號了喔')
+			}
 		}else{
 			alert('此序號不存在')
-		}
-		
-		
+		}		
 		input.value ="";
 	}
 	
