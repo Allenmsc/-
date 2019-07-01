@@ -3,6 +3,7 @@
 <html>
     <head>
         <title>元素合成</title>
+	<script src="jquery.js"></script>
     </head>
     
     <body background="wallpaper2.png">
@@ -144,12 +145,35 @@
 
 
 
-<script type="text/javascript">
+<script>
     var quantity = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 	var price = [0,10,10,10,10,10,30,30,30,30,30,30,30,30,30,30,40,40,40,40,40,40,40,40,50,50,50,50,60,130,100,130,100,100,110,130,120,100,100,120,120,110,110,130,110,260,370,330,300,300,290,260,240,320,250,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000]
 	var count = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 	
-	<!--在元素欄位增加元素的數量-->
+	function update(){
+		var a = {
+			sheetUrl: 'https://docs.google.com/spreadsheets/d/115EMFAA5QN0oOqRPrfMOlE0dLcU2azB6W8hvy4A06GI/edit#gid=0',
+			sheetTag:'group1',
+			row: 1,
+			col: 1,
+			endRow: 17,
+			endCol: 1
+		};
+		$.get('https://script.google.com/macros/s/AKfycbx4UGEHwODJZW29vIFNKehc74SlsxFmDjveyA04v4QSH5HPm5M/exec',a,function(data){
+		var d = data.split(',');
+		var arr = [];
+		for (var i=0; i<(a.endRow-a.row+1); i++){
+			arr[i] = d.splice(0,(a.endCol-a.col+1));
+		};
+		quantity = arr;
+		});
+		for(i=1;i<87;i++){
+			mission_complete(i,10)
+		}
+	}	
+	update();
+	
+	
 	function mission_complete(index, get=10){
 		quantity[index] += get;
 		var hello = index;
@@ -157,7 +181,6 @@
 		el1.textContent = quantity[index];
             };
 	
-	<!--讓原本沒有的元素放到欄位裡面-->
 	function get_new_element(index, number){
 		if (index>5 && index<29){
 			var position = document.getElementById("2nd-1");
